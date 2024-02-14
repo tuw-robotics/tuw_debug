@@ -1,8 +1,10 @@
 /**
  * @author Markus Bader <markus.bader@tuwien.ac.at>
  **/
-#ifndef TUW_DEBUG__DEBUG_HPP
-#define TUW_DEBUG__DEBUG_HPP
+#ifndef TUW__DEBUG_HPP
+#define TUW__DEBUG_HPP
+
+#include <string>
 
 namespace tuw
 {
@@ -13,6 +15,7 @@ namespace tuw
     {
     public:
         Debug();
+        std::string info();
     };
 };
 #endif // TUW_DEBUG__TUW_DEBUG_HPP

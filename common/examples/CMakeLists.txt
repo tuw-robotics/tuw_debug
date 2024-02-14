@@ -1,9 +1,9 @@
-add_executable(mx_demo_joystick demo.cpp)
-target_link_libraries(mx_demo_joystick mx_joystick)
+add_executable(tuw_debug_demo demo.cpp)
+target_link_libraries(tuw_debug_demo tuw_debug)
 
 
-install(TARGETS mx_demo_joystick
-  # IMPORTANT: Add the joystick executable to the "export-set"
-  EXPORT MXJoystickTargets
+install(TARGETS tuw_debug_demo
+  # IMPORTANT: Add the tuw_debug_demo executable to the "export-set"
+  EXPORT TUWDebugTargets
   RUNTIME DESTINATION "${INSTALL_BIN_DIR}" COMPONENT bin)
   

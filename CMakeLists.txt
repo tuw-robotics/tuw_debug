@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.0)
-project(MXJoystick)
-set(MXJOYSTICK_MAJOR_VERSION 0)
-set(MXJOYSTICK_MINOR_VERSION 1)
-set(MXJOYSTICK_PATCH_VERSION 0)
-set(MXJOYSTICK_VERSION
-  ${MXJOYSTICK_MAJOR_VERSION}.${MXJOYSTICK_MINOR_VERSION}.${MXJOYSTICK_PATCH_VERSION})
+project(TUWDebug)
+set(TUWDEBUG_MAJOR_VERSION 0)
+set(TUWDEBUG_MINOR_VERSION 1)
+set(TUWDEBUG_PATCH_VERSION 0)
+set(TUWDEBUG_VERSION
+  ${TUWDEBUG_MAJOR_VERSION}.${TUWDEBUG_MINOR_VERSION}.${TUWDEBUG_PATCH_VERSION})
 
 # Offer the user the choice of overriding the installation directories
 set(INSTALL_LIB_DIR lib CACHE PATH "Installation directory for libraries")
@@ -14,7 +14,7 @@ set(INSTALL_INCLUDE_DIR include CACHE PATH
 if(WIN32 AND NOT CYGWIN)
   set(DEF_INSTALL_CMAKE_DIR CMake)
 else()
-  set(DEF_INSTALL_CMAKE_DIR lib/CMake/MXJoystick)
+  set(DEF_INSTALL_CMAKE_DIR lib/CMake/TUWDebug)
 endif()
 set(INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
   "Installation directory for CMake files")
@@ -38,36 +38,36 @@ add_subdirectory(common)
 # ===============================
 
 # Add all targets to the build-tree export set
-export(TARGETS mx_joystick mx_demo_joystick
-  FILE "${PROJECT_BINARY_DIR}/MXJoystickTargets.cmake")
+export(TARGETS tuw_debug tuw_debug_demo
+  FILE "${PROJECT_BINARY_DIR}/TUWDebugTargets.cmake")
 
 # Export the package for use from the build-tree
 # (this registers the build-tree with a global CMake-registry)
-export(PACKAGE MXJoystick)
+export(PACKAGE TUWDebug)
 
-# Create the MXJoystickConfig.cmake and MXJoystickConfigVersion files
+# Create the TUWDebugConfig.cmake and TUWDebugConfigVersion files
 file(RELATIVE_PATH REL_INCLUDE_DIR "${INSTALL_CMAKE_DIR}"
    "${INSTALL_INCLUDE_DIR}")
 # ... for the build tree
 set(CONF_INCLUDE_DIRS "${PROJECT_INCLUDE_DIR}")  # local config
-configure_file(MXJoystickConfig.cmake.in
-  "${PROJECT_BINARY_DIR}/MXJoystickConfig.cmake" @ONLY)
+configure_file(TUWDebugConfig.cmake.in
+  "${PROJECT_BINARY_DIR}/TUWDebugConfig.cmake" @ONLY)
 # ... for the install tree
 set(CONF_INCLUDE_DIRS "${INSTALL_INCLUDE_DIR}")  # installed config
-configure_file(MXJoystickConfig.cmake.in
-  "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/MXJoystickConfig.cmake" @ONLY)
+configure_file(TUWDebugConfig.cmake.in
+  "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/TUWDebugConfig.cmake" @ONLY)
 # ... for both
-configure_file(MXJoystickConfigVersion.cmake.in
-  "${PROJECT_BINARY_DIR}/MXJoystickConfigVersion.cmake" @ONLY)
+configure_file(TUWDebugConfigVersion.cmake.in
+  "${PROJECT_BINARY_DIR}/TUWDebugConfigVersion.cmake" @ONLY)
 
-# Install the MXJoystickConfig.cmake and MXJoystickConfigVersion.cmake
+# Install the TUWDebugConfig.cmake and TUWDebugConfigVersion.cmake
 install(FILES
-  "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/MXJoystickConfig.cmake"
-  "${PROJECT_BINARY_DIR}/MXJoystickConfigVersion.cmake"
+  "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/TUWDebugConfig.cmake"
+  "${PROJECT_BINARY_DIR}/TUWDebugConfigVersion.cmake"
   DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
   
 # Install the export set for use with the install-tree
-install(EXPORT MXJoystickTargets DESTINATION
+install(EXPORT TUWDebugTargets DESTINATION
   "${INSTALL_CMAKE_DIR}" COMPONENT dev)
 
 
