@@ -1,0 +1,19 @@
+# - Config file for the MXJoystick package
+# It defines the following variables
+#  MXJoystick_INCLUDE_DIRS - include directories for MXJoystick
+#  MXJoystick_LIBRARIES    - libraries to link against
+#  MXJoystick_EXECUTABLE   - the bar executable
+
+# Compute paths
+get_filename_component(MXJoystick_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+set(MXJoystick_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+# Our library dependencies (contains definitions for IMPORTED targets)
+if(NOT TARGET mx_joystick AND NOT MXJoystick_BINARY_DIR)
+  include("${MXJoystick_CMAKE_DIR}/MXJoystickTargets.cmake")
+endif()
+
+# These are IMPORTED targets created by MXJoystickTargets.cmake
+set(MXJoystick_LIBRARIES mx_joystick)
+set(MXJoystick_EXECUTABLE mx_joystick_demo)
+
